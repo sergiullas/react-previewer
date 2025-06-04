@@ -1,7 +1,26 @@
 import React from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+import {
+  DataGrid,
+  GridColDef,
+  GridRowModel,
+  GridSelectionModel,
+  GridRowParams,
+} from '@mui/x-data-grid';
 
-const DataGridWidget = ({
+interface DataGridWidgetProps {
+  title: string;
+  widgetId: string;
+  rows: GridRowModel[];
+  columns: GridColDef[];
+  compareSelection: { widgetId: string; city: string }[];
+  onCompareSelectionChange: (
+    widgetId: string,
+    selectionModel: GridSelectionModel
+  ) => void;
+  onRowClick: (widgetId: string, params: GridRowParams) => void;
+}
+
+const DataGridWidget: React.FC<DataGridWidgetProps> = ({
   title,
   widgetId,
   rows,
